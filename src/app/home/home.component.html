@@ -1,0 +1,23 @@
+<div>
+    <p class="text-black">{{title}}</p>
+
+    <div *ngIf="wishItems.length==0; then noItems else showItems"></div>
+
+    <ng-template #noItems>
+        <p class="text-balck">No items</p>
+    </ng-template>
+
+    <ng-template #showItems>
+        <li *ngFor="let item of wishItems; index as ii">
+            <input 
+            class="wish-text" 
+            type="checkbox"
+            [checked]="item.isCompleted"
+            [attr.data-index]="ii"
+            (click)="toggleItem($event)" 
+            /> {{item.name}}
+        </li>
+    </ng-template>
+
+
+</div>
